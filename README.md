@@ -43,10 +43,10 @@ The following properties can be set to customize the year picker:
 * `flatMode` (default: false): when set to true, only the picker is shown (see demo).
 * `yearsPerPage` (default: 12): the number of years shown on a page.
 * `decreaseButtonText` (default: '<'): the text on the decrease year button. Set for example to
-  "<i class='fa fa-chevron-left'></i>" to work with Font Awesome.
+  `"<i class='fa fa-chevron-left'></i>"` to work with Font Awesome.
 * `increaseButtonText` (default: '>'): the text on the decrease year button. Set for example to
-  "<i class='fa fa-chevron-right'></i>" to work with Font Awesome.
+  `"<i class='fa fa-chevron-right'></i>"` to work with Font Awesome.
 * `previousPageButtonText` (default: '<'): the text on the previous page button. Set for example to
-  "<i class='fa fa-chevron-left'></i>" to work with Font Awesome.
+  `"<i class='fa fa-chevron-left'></i>"` to work with Font Awesome.
 * `nextPageButtonText` (default: '>'): : the text on the next page button. Set for example to
-  "<i class='fa fa-chevron-right'></i>" to work with Font Awesome.
+  `"<i class='fa fa-chevron-right'></i>"` to work with Font Awesome.
