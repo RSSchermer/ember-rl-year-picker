@@ -1,16 +1,13 @@
 {
   "name": "ember-rl-year-picker",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
   "scripts": {
-    "start": "ember server",
-    "build": "ember build",
     "test": "ember test"
   },
-  "repository": "https://github.com/stefanpenner/ember-cli",
+  "repository": "https://github.com/rsschermer/ember-rl-year-picker",
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -34,5 +31,9 @@
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/rsschermer/ember-rl-year-picker/issues"
+  },
+  "homepage": "https://github.com/rsschermer/ember-rl-year-picker"
 }
