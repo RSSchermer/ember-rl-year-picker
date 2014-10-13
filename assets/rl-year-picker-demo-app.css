@@ -1,0 +1,94 @@
+.rl-year-picker {
+  position: relative;
+  float: left;
+  margin-right: 150px; }
+
+.rl-year-picker button {
+  border: 1px solid black;
+  margin: 0;
+  background-color: white;
+  border-radius: 3px;
+  padding: 5px; }
+
+.rl-year-picker button:hover {
+  cursor: pointer;
+  background-color: #ddd; }
+
+.rl-year-picker .buttons {
+  display: inline-block;
+  padding: 0; }
+
+.rl-year-picker .buttons button {
+  float: left; }
+
+.rl-year-picker .decrease-btn {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; }
+
+.rl-year-picker .increase-btn {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0; }
+
+.rl-year-picker .picker-toggle-btn {
+  border-radius: 0;
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.rl-year-picker .picker-toggle-btn .caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black; }
+
+.rl-year-picker.expanded .picker-toggle-btn {
+  background-color: #ddd; }
+
+.rl-year-picker .picker {
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid black;
+  background-color: white;
+  width: 200px; }
+
+.rl-year-picker.expanded .picker {
+  position: absolute;
+  top: 100%;
+  z-index: 999;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }
+
+.rl-year-picker .previous-page-btn {
+  float: left; }
+
+.rl-year-picker .next-page-btn {
+  float: right; }
+
+.rl-year-picker ul.year-list {
+  clear: both;
+  margin-top: 5px;
+  list-style: none;
+  padding: 0;
+  width: 200px;
+  height: 140px; }
+
+.rl-year-picker ul.year-list li {
+  display: block;
+  margin: 0;
+  float: left;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid white; }
+
+.rl-year-picker ul.year-list li:hover {
+  cursor: pointer;
+  background-color: #ddd; }
+
+.rl-year-picker ul.year-list li.active {
+  cursor: auto;
+  background-color: #ddd; }
