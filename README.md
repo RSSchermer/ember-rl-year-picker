@@ -2,6 +2,10 @@
 
 Ember year picker component.
 
+## Demo
+
+Demo avialable [here](http://rsschermer.github.io/ember-rl-year-picker/).
+
 ## Installation
 
 ```bash
