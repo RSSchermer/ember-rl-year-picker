@@ -29,7 +29,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.baseURL = '/';
+    ENV.baseURL = '/ember-rl-year-picker';
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
