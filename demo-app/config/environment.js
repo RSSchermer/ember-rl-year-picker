@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'rl-year-picker-demo-app',
     environment: environment,
-    baseURL: '/',
+    baseURL: '/ember-rl-year-picker',
     locationType: 'auto',
     contentSecurityPolicy: {
       'default-src': "'none'",
@@ -29,7 +29,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-
+    ENV.baseURL = '/';
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
