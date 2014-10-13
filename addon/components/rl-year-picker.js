@@ -93,8 +93,8 @@ export default Ember.Component.extend({
   }.observes('year').on('didInsertElement'),
 
   clickoutHandler: function (event) {
-    if(event.data.component.get('isExpanded') && !Ember.$(event.target).closest('.year-picker .picker').length &&
-      !Ember.$(event.target).closest('.year-picker .picker-toggle-btn').length
+    if(event.data.component.get('isExpanded') && !Ember.$(event.target).closest('.rl-year-picker .picker').length &&
+      !Ember.$(event.target).closest('.rl-year-picker .picker-toggle-btn').length
     ) {
       event.data.component.set('isExpanded', false);
     }
