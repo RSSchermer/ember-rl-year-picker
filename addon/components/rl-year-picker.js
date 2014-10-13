@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['year-picker'],
+  classNames: ['rl-year-picker', 'rl-picker'],
 
   classNameBindings: ['isExpanded:expanded'],
 
