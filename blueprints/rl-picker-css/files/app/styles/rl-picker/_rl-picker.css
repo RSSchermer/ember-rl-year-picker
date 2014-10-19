@@ -65,7 +65,7 @@
   width: 200px;
 }
 
-.rl-picker.expanded .picker {
+.rl-picker.expanded > .picker {
   position: absolute;
   top: 100%;
   z-index: 999;
