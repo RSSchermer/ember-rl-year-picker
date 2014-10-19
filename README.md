@@ -12,10 +12,15 @@ Demo avialable [here](http://rsschermer.github.io/ember-rl-year-picker/).
 npm install ember-rl-year-picker --save-dev
 ```
 
-This addon does not automatically import its stylesheet into your application. There is a default stylesheet in
-[app/styles/rl-year-picker.css](app/styles/rl-year-picker.css) you can import into your applications scss or less file.
-You can also opt for creating your own stylesheet (and use
-[app/styles/rl-year-picker.css](app/styles/rl-year-picker.css) as inspiration).
+This addon does not automatically import a stylesheet into your application. Run the following command to generate a
+stylesheet you can use as a base:
+
+```bash
+ember generate rl-picker-css
+```
+
+This will create a stylesheet at `app/styles/rl-picker/_rl-picker.css`. You can include this stylesheet into your
+applications sass or less files.
 
 ## Usage
 
