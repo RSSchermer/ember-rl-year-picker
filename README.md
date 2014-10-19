@@ -1,6 +1,8 @@
 # Ember-rl-year-picker
 
-Ember year picker component.
+Ember year picker component. See also:
+
+* [ember-rl-month-picker](https://github.com/RSSchermer/ember-rl-month-picker)
 
 ## Demo
 
@@ -20,7 +22,7 @@ ember generate rl-picker-css
 ```
 
 This will create a stylesheet at `app/styles/rl-picker/_rl-picker.css`. You can include this stylesheet into your
-applications sass or less files.
+application's sass or less files.
 
 ## Usage
 

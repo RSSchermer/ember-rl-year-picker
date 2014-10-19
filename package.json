@@ -1,6 +1,6 @@
 {
   "name": "ember-rl-year-picker",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "directories": {
     "test": "tests"
   },
@@ -27,7 +27,11 @@
     "glob": "^4.0.5"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-component",
+    "year-picker",
+    "year",
+    "picker"
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"

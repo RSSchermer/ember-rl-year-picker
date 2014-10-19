@@ -92,7 +92,7 @@ test('decrease year button decreases the year by 1', function () {
   });
 });
 
-test('decrease year button increases the year by 1', function () {
+test('increase year button increases the year by 1', function () {
   var component = this.subject();
   var $component = this.append();
 
