@@ -1,9 +1,10 @@
 import Ember from 'ember';
+import DropdownComponentMixin from 'ember-rl-dropdown/mixins/rl-dropdown-component';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(DropdownComponentMixin, {
   classNames: ['rl-year-picker', 'rl-picker'],
 
-  classNameBindings: ['isExpanded:expanded'],
+  classNameBindings: ['dropdownExpanded:expanded'],
 
   year: null,
 
@@ -23,11 +24,9 @@ export default Ember.Component.extend({
 
   currentPage: 0,
 
-  isExpanded: false,
-
   pickerVisible: function () {
-    return this.get('flatMode') || this.get('isExpanded');
-  }.property('flatMode', 'isExpanded'),
+    return this.get('flatMode') || this.get('dropdownExpanded');
+  }.property('flatMode', 'dropdownExpanded'),
 
   yearsOnPage: function () {
     var yearsPerPage = this.get('yearsPerPage');
@@ -69,10 +68,6 @@ export default Ember.Component.extend({
       this.sendAction('pickedYear', this.get('year'));
     },
 
-    toggleIsExpanded: function () {
-      this.set('isExpanded', !this.get('isExpanded'));
-    },
-
     previousPage: function () {
       this.set('currentPage', this.get('currentPage') - 1);
     },
@@ -83,32 +78,12 @@ export default Ember.Component.extend({
 
     pickedYear: function (year) {
       this.set('year', year);
-      this.set('isExpanded', false);
+      this.set('dropdownExpanded', false);
       this.sendAction('pickedYear', year);
     }
   },
 
   resetCurrentPage: function () {
     this.set('currentPage', 0);
-  }.observes('year').on('didInsertElement'),
-
-  clickoutHandler: function (event) {
-    if(event.data.component.get('isExpanded') && !Ember.$(event.target).closest('.rl-year-picker .picker').length &&
-      !Ember.$(event.target).closest('.rl-year-picker .picker-toggle-btn').length
-    ) {
-      event.data.component.set('isExpanded', false);
-    }
-  },
-
-  manageClickoutEvent: function () {
-    if (this.get('isExpanded')) {
-      Ember.$(document).bind('click', {component: this}, this.clickoutHandler);
-    } else {
-      Ember.$(document).unbind('click', this.clickoutHandler);
-    }
-  }.observes('isExpanded').on('didInsertElement'),
-
-  unbindClickoutEvent: function () {
-    Ember.$(document).unbind('click', this.clickoutHandler);
-  }.on('willDestroyElement')
+  }.observes('year').on('didInsertElement')
 });

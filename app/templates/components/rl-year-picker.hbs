@@ -1,7 +1,7 @@
 {{#unless flatMode}}
   <div class='buttons'>
     <button class='decrease-btn' {{action 'decreaseYear'}}>{{decreaseButtonText}}</button>
-    <button class='picker-toggle-btn' {{action 'toggleIsExpanded'}}>
+    <button class='picker-toggle-btn rl-dropdown-toggle' {{action 'toggleDropdown'}}>
       {{#if year}}
         {{year}}
       {{else}}
@@ -14,7 +14,7 @@
 {{/unless}}
 
 {{#if pickerVisible}}
-  <div class='picker'>
+  <div class='picker rl-dropdown'>
     <div class='page-controls'>
       <button class='previous-page-btn' {{action 'previousPage'}}>{{previousPageButtonText}}</button>
       <button class='next-page-btn' {{action 'nextPage'}}>{{nextPageButtonText}}</button>
