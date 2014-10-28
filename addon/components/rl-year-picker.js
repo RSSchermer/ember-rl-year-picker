@@ -52,7 +52,7 @@ export default Ember.Component.extend(DropdownComponentMixin, {
       if (!this.get('year')) {
         this.set('year', new Date().getFullYear() - 1);
       } else {
-        this.set('year', this.get('year') - 1);
+        this.decrementProperty('year');
       }
 
       this.sendAction('pickedYear', this.get('year'));
@@ -62,23 +62,22 @@ export default Ember.Component.extend(DropdownComponentMixin, {
       if (!this.get('year')) {
         this.set('year', new Date().getFullYear() + 1);
       } else {
-        this.set('year', this.get('year') + 1);
+        this.incrementProperty('year');
       }
 
       this.sendAction('pickedYear', this.get('year'));
     },
 
     previousPage: function () {
-      this.set('currentPage', this.get('currentPage') - 1);
+      this.decrementProperty('currentPage');
     },
 
     nextPage: function () {
-      this.set('currentPage', this.get('currentPage') + 1);
+      this.incrementProperty('currentPage');
     },
 
     pickedYear: function (year) {
-      this.set('year', year);
-      this.set('dropdownExpanded', false);
+      this.setProperties({ 'year': year, 'dropdownExpanded': false });
       this.sendAction('pickedYear', year);
     }
   },
