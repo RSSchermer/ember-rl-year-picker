@@ -14,7 +14,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "ember-rl-dropdown": "0.0.1"
+    "ember-rl-dropdown": "0.0.3"
   },
   "devDependencies": {
     "body-parser": "^1.2.0",

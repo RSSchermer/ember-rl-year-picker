@@ -1,6 +1,10 @@
 # Ember-rl-year-picker
 
-Ember year picker component. See also:
+Ember year picker component.
+
+[![Build Status](https://travis-ci.org/RSSchermer/ember-rl-year-picker.svg?branch=0.0.10)](https://travis-ci.org/RSSchermer/ember-rl-year-picker)
+
+See also:
 
 * [ember-rl-month-picker](https://github.com/RSSchermer/ember-rl-month-picker)
 

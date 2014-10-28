@@ -24,6 +24,8 @@ export default Ember.Component.extend(DropdownComponentMixin, {
 
   currentPage: 0,
 
+  clickOutEventNamespace: 'rl-year-picker',
+
   pickerVisible: function () {
     return this.get('flatMode') || this.get('dropdownExpanded');
   }.property('flatMode', 'dropdownExpanded'),

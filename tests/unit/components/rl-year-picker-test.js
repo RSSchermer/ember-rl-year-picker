@@ -50,7 +50,7 @@ test('closes the picker when the toggle button is clicked', function () {
   });
 
   equal($component.find('.picker').length, 1);
-
+  
   click('.picker-toggle-btn');
 
   andThen(function () {
