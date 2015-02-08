@@ -42,6 +42,8 @@ The following properties can be set to customize the year picker:
 * `yearPlaceholderText` (default: 'Year'): the text displayed on the picker toggle button when the year value is null.
 * `flatMode` (default: false): when set to true, only the picker is shown (see demo).
 * `yearsPerPage` (default: 12): the number of years shown on a page.
+* `minYear` (default: null): the minimum year that can be selected.
+* `maxYear` (default: null): the maximum year that can be selected.
 * `decreaseButtonText` (default: '<'): the text on the decrease year button. Set for example to
   `"<i class='fa fa-chevron-left'></i>"` to work with Font Awesome.
 * `increaseButtonText` (default: '>'): the text on the decrease year button. Set for example to
