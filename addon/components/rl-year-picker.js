@@ -28,23 +28,23 @@ export default Ember.Component.extend(DropdownComponentMixin, {
 
   clickOutEventNamespace: 'rl-year-picker',
 
-  pickerVisible: function () {
+  pickerVisible: Ember.computed('flatMode', 'dropdownExpanded', function () {
     return this.get('flatMode') || this.get('dropdownExpanded');
-  }.property('flatMode', 'dropdownExpanded'),
+  }),
 
-  decreaseYearButtonDisabled: function () {
+  decreaseYearButtonDisabled: Ember.computed('year', 'minYear', function () {
     var year = this.get('year') || new Date().getFullYear() - 1;
 
     return year <= this.get('minYear');
-  }.property('year', 'minYear'),
+  }),
 
-  increaseYearButtonDisabled: function () {
+  increaseYearButtonDisabled: Ember.computed('year', 'maxYear', function () {
     var year = this.get('year') || new Date().getFullYear() - 1;
 
     return year >= this.get('maxYear');
-  }.property('year', 'minYear'),
+  }),
 
-  yearsOnPage: function () {
+  yearsOnPage: Ember.computed('year', 'currentPage', 'yearsPerPage', 'minYear', 'maxYear', function () {
     var yearsPerPage = this.get('yearsPerPage');
     var currentYear = this.get('year') || new Date().getFullYear();
     var startingYear = currentYear - Math.floor(yearsPerPage / 2) + this.get('currentPage') * yearsPerPage;
@@ -65,15 +65,15 @@ export default Ember.Component.extend(DropdownComponentMixin, {
     }
 
     return yearsOnPage;
-  }.property('year', 'currentPage', 'yearsPerPage', 'minYear', 'maxYear'),
+  }),
 
-  previousPageButtonDisabled: function () {
-    return this.get('yearsOnPage.firstObject.year') <= this.get('minYear');
-  }.property('yearsOnPage', 'minYear'),
+  previousPageButtonDisabled: Ember.computed('yearsOnPage', 'minYear', function () {
+    return Ember.A(this.get('yearsOnPage')).get('firstObject.year') <= this.get('minYear');
+  }),
 
-  nextPageButtonDisabled: function () {
-    return this.get('yearsOnPage.lastObject.year') >= this.get('maxYear');
-  }.property('yearsOnPage', 'maxYear'),
+  nextPageButtonDisabled: Ember.computed('yearsOnPage', 'maxYear', function () {
+    return Ember.A(this.get('yearsOnPage')).get('lastObject.year') >= this.get('maxYear');
+  }),
 
   actions: {
     decreaseYear: function () {
@@ -123,7 +123,7 @@ export default Ember.Component.extend(DropdownComponentMixin, {
     }
   },
 
-  resetCurrentPage: function () {
+  resetCurrentPage: Ember.on('didInsertElement', Ember.observer('year', function () {
     this.set('currentPage', 0);
-  }.observes('year').on('didInsertElement')
+  }))
 });

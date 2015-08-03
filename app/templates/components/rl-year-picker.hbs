@@ -1,6 +1,6 @@
 {{#unless flatMode}}
   <div class='buttons'>
-    <button class='decrease-btn' {{action 'decreaseYear'}} {{bind-attr disabled="decreaseYearButtonDisabled"}}>
+    <button class='decrease-btn' {{action 'decreaseYear'}} disabled='{{if decreaseYearButtonDisabled "disabled"}}'>
       {{{decreaseButtonText}}}
     </button>
 
@@ -13,7 +13,7 @@
       <i class='caret'></i>
     </button>
 
-    <button class='increase-btn' {{action 'increaseYear'}} {{bind-attr disabled="increaseYearButtonDisabled"}}>
+    <button class='increase-btn' {{action 'increaseYear'}} disabled='{{if increaseYearButtonDisabled "disabled"}}'>
       {{{increaseButtonText}}}
     </button>
   </div>
@@ -22,18 +22,18 @@
 {{#if pickerVisible}}
   <div class='picker rl-dropdown'>
     <div class='page-controls'>
-      <button class='previous-page-btn' {{action 'previousPage'}} {{bind-attr disabled="previousPageButtonDisabled"}}>
+      <button class='previous-page-btn' {{action 'previousPage'}} disabled='{{if previousPageButtonDisabled "disabled"}}'>
         {{{previousPageButtonText}}}
       </button>
 
-      <button class='next-page-btn' {{action 'nextPage'}} {{bind-attr disabled="nextPageButtonDisabled"}}>
+      <button class='next-page-btn' {{action 'nextPage'}} disabled='{{if nextPageButtonDisabled "disabled"}}'>
         {{{nextPageButtonText}}}
       </button>
     </div>
 
     <ul class='year-list'>
-      {{#each year in yearsOnPage}}
-        <li {{bind-attr class="year.isActive:active year.outOfRange:out-of-range"}} {{action 'pickedYear' year.year}}>
+      {{#each yearsOnPage as |year|}}
+        <li class='{{if year.isActive "active"}} {{if year.outOfRange "out-of-range"}}' {{action 'pickedYear' year.year}}>
           {{year.year}}
         </li>
       {{/each}}

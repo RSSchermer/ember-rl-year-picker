@@ -14,240 +14,201 @@ moduleForComponent('rl-year-picker', 'RlYearPickerComponent', {
   }
 });
 
-test('does not show a picker when not in flatMode and not expanded', function () {
-  var $component = this.append();
-
-  equal($component.find('.picker').length, 0);
+test('does not show a picker when not in flatMode and not expanded', function (assert) {
+  assert.equal(this.$().find('.picker').length, 0);
 });
 
-test('does show a picker when not in flatMode and expanded', function () {
-  var $component = this.append();
+test('does show a picker when not in flatMode and expanded', function (assert) {
+  var $component = this.$();
 
-  click('.picker-toggle-btn');
+  $component.find('.picker-toggle-btn').click();
 
-  andThen(function () {
-    equal($component.find('.picker').length, 1);
+  Ember.run(function () {
+    assert.equal($component.find('.picker').length, 1);
   });
 });
 
-test('does show a picker when in flatMode', function () {
+test('does show a picker when in flatMode', function (assert) {
   var component = this.subject();
-  var $component = this.append();
+  var $component = this.$();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.set('flatMode', true);
   });
 
-  equal($component.find('.picker').length, 1);
+  assert.equal($component.find('.picker').length, 1);
 });
 
-test('closes the picker when the toggle button is clicked', function () {
+test('closes the picker when the toggle button is clicked', function (assert) {
   var component = this.subject();
-  var $component = this.append();
+  var $component = this.$();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.set('dropdownExpanded', true);
   });
 
-  equal($component.find('.picker').length, 1);
+  assert.equal($component.find('.picker').length, 1);
 
-  click('.picker-toggle-btn');
+  $component.find('.picker-toggle-btn').click();
 
-  andThen(function () {
-    equal($component.find('.picker').length, 0);
-  });
+  assert.equal($component.find('.picker').length, 0);
 });
 
-test('closes the picker when clicking outside', function () {
+test('closes the picker when clicking outside', function (assert) {
   var component = this.subject();
-  var $component = this.append();
+  var $component = this.$();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.set('dropdownExpanded', true);
   });
 
-  equal($component.find('.picker').length, 1);
+  assert.equal($component.find('.picker').length, 1);
 
-  Ember.$($component).parent().append('<div id="clickout-test-element"></div>');
+  $component.parent().append('<div id="clickout-test-element"></div>');
 
-  click('#clickout-test-element');
+  Ember.run.later(function () {
+    $component.parent().find('#clickout-test-element').click();
 
-  andThen(function () {
-    equal($component.find('.picker').length, 0);
-  });
+    Ember.run.later(function () {
+      assert.equal($component.find('.picker').length, 0);
+    }, 2);
+  }, 2);
 });
 
-test('decrease year button decreases the year by 1', function () {
+test('decrease year button decreases the year by 1', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.set('year', 2000);
   });
 
-  click('.decrease-btn');
+  this.$().find('.decrease-btn').click();
 
-  andThen(function () {
-    equal(component.get('year'), 1999);
-  });
+  assert.equal(component.get('year'), 1999);
 });
 
-test('increase year button increases the year by 1', function () {
+test('increase year button increases the year by 1', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.set('year', 2000);
   });
 
-  click('.increase-btn');
+  this.$().find('.increase-btn').click();
 
-  andThen(function () {
-    equal(component.get('year'), 2001);
-  });
+  assert.equal(component.get('year'), 2001);
 });
 
-test('the current year is shown as the active year', function () {
+test('the current year is shown as the active year', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 2000, 'flatMode': true, 'yearsPerPage': 11 });
   });
 
-  andThen(function () {
-    equal(find('li.active').text().trim(), '2000');
-  });
+  assert.equal(this.$().find('li.active').text().trim(), '2000');
 });
 
-test('the previous page shows the 11 preceding years when yearsPerPage is 11', function () {
+test('the previous page shows the 11 preceding years when yearsPerPage is 11', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 2000, 'flatMode': true, 'yearsPerPage': 11 });
   });
 
-  andThen(function () {
-    equal(find('li').first().text().trim(), '1995');
-  });
+  assert.equal(this.$().find('li').first().text().trim(), '1995');
 
-  click('.previous-page-btn');
+  this.$().find('.previous-page-btn').click();
 
-  andThen(function () {
-    equal(find('li').last().text().trim(), '1994');
-    equal(find('li').first().text().trim(), '1984');
-  });
+  assert.equal(this.$().find('li').last().text().trim(), '1994');
+  assert.equal(this.$().find('li').first().text().trim(), '1984');
 });
 
-test('the next page shows the 11 subsequent years when yearsPerPage is 11', function () {
+test('the next page shows the 11 subsequent years when yearsPerPage is 11', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 2000, 'flatMode': true, 'yearsPerPage': 11 });
   });
 
-  andThen(function () {
-    equal(find('li').last().text().trim(), '2005');
-  });
+  assert.equal(this.$().find('li').last().text().trim(), '2005');
 
-  click('.next-page-btn');
+  this.$().find('.next-page-btn').click();
 
-  andThen(function () {
-    equal(find('li').first().text().trim(), '2006');
-    equal(find('li').last().text().trim(), '2016');
-  });
+  assert.equal(this.$().find('li').first().text().trim(), '2006');
+  assert.equal(this.$().find('li').last().text().trim(), '2016');
 });
 
-test('a year is can not be selected when it is smaller than the minYear specified', function () {
+test('a year is can not be selected when it is smaller than the minYear specified', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 2000, 'flatMode': true, 'minYear': 1998 });
   });
 
-  click('li:contains("1997")');
+  this.$().find('li:contains("1997")').click();
 
-  andThen(function () {
-    equal(component.get('year'), 2000);
-  });
+  assert.equal(component.get('year'), 2000);
 });
 
-test('the decrease year button is disabled when the current year <= the minYear specified', function () {
+test('the decrease year button is disabled when the current year <= the minYear specified', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 1998, 'minYear': 1998 });
   });
 
-  click('.decrease-btn');
+  this.$().find('.decrease-btn').click();
 
-  andThen(function () {
-    equal(component.get('year'), 1998);
-  });
+  assert.equal(component.get('year'), 1998);
 });
 
-test('the previous page button is disabled when the last year on the previous page < the minYear specified', function () {
+test('the previous page button is disabled when the last year on the previous page < the minYear specified', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 2000, 'flatMode': true, 'minYear': 1995, 'yearsPerPage': 11 });
   });
 
-  click('.previous-page-btn');
+  this.$().find('.previous-page-btn').click();
 
-  andThen(function () {
-    equal(find('li').first().text().trim(), '1995');
-    equal(find('li').last().text().trim(), '2005');
-  });
+  assert.equal(this.$().find('li').first().text().trim(), '1995');
+  assert.equal(this.$().find('li').last().text().trim(), '2005');
 });
 
-test('a year is can not be selected when it is greater than the maxYear specified', function () {
+test('a year is can not be selected when it is greater than the maxYear specified', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 2000, 'flatMode': true, 'maxYear': 2002 });
   });
 
-  click('li:contains("2003")');
+  this.$().find('li:contains("2003")').click();
 
-  andThen(function () {
-    equal(component.get('year'), 2000);
-  });
+  assert.equal(component.get('year'), 2000);
 });
 
-test('the increase year button is disabled when the current year >= the maxYear specified', function () {
+test('the increase year button is disabled when the current year >= the maxYear specified', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 1998, 'maxYear': 1998 });
   });
 
-  click('.increase-btn');
+  this.$().find('.increase-btn').click();
 
-  andThen(function () {
-    equal(component.get('year'), 1998);
-  });
+  assert.equal(component.get('year'), 1998);
 });
 
-test('the next page button is disabled when the first year on the previous page > the maxYear specified', function () {
+test('the next page button is disabled when the first year on the previous page > the maxYear specified', function (assert) {
   var component = this.subject();
-  var $component = this.append();
 
-  Ember.run(function(){
+  Ember.run(function () {
     component.setProperties({ 'year': 2000, 'flatMode': true, 'maxYear': 2005, 'yearsPerPage': 11 });
   });
 
-  click('.next-page-btn');
+  this.$().find('.next-page-btn').click();
 
-  andThen(function () {
-    equal(find('li').first().text().trim(), '1995');
-    equal(find('li').last().text().trim(), '2005');
-  });
+  assert.equal(this.$().find('li').first().text().trim(), '1995');
+  assert.equal(this.$().find('li').last().text().trim(), '2005');
 });
