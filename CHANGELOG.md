@@ -1,5 +1,9 @@
 #Ember-rl-year-picker changelog
 
+## 0.2.0
+
+Upgrades templates syntax to the new HTML-bars syntax, which means as of this version Ember 1.13 or higher is required.
+
 ##0.1.0
 
 Added `minYear` and `maxYear` options for constraining the years that can be selected by the user.
